@@ -1,0 +1,23 @@
+#select all movies direct by director Guy Ritchie
+
+SELECT * FROM movies,directors WHERE movies.directors_id = directors.id AND first = 'Guy';
+#or
+SELECT title, first, last FROM movies INNER JOIN directors ON movies.directors_id = directors.id WHERE last='Ritchie';
+
+#select all movies starrting actor Brad Pitt
+
+SELECT title, first, last FROM movies INNER JOIN actors_movies ON movies.id = actors_movies.movies_id 
+INNER JOIN actors ON actors.id =  actors_movies.actors_id WHERE last='Pitt';
+
+#select all movies directed by director name and starring actor
+
+SELECT title, actors.first, actors.last, directors.first,directors.last FROM movies INNER JOIN 
+actors_movies ON movies.id = actors_movies.movies_id INNER JOIN actors ON actors.id =  actors_movies.actors_id 
+INNER JOIN directors ON movies.directors_id = directors.id WHERE directors.last='Ritchie' AND actors.last = 'Pitt';
+
+#select all actors in movie GoodWill Hunting
+
+SELECT title, first, last FROM movies INNER JOIN actors_movies ON movies.id = actors_movies.movies_id 
+movies-# INNER JOIN actors ON actors.id =  actors_movies.actors_id WHERE title = 'GoodWill Hunting';
+      
+
